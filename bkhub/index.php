@@ -1,3 +1,10 @@
+<?php 
+	if(isset($_POST["input_money"])) {
+		echo $_POST["input_money"]; die();
+	}
+	
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,30 +30,32 @@
 	<!-- Input exchange money -->
 	<div class="container exchange-money">
 		<h3>Đổi tiền</h3>
-		<div class="row">
-			<div class="col-12 col-md-4">
-				<label for="">Nhập số tiền</label>
-				<input type="number" class="form-control" id="input_money" aria-describedby="basic-addon3">
+		<form method="POST" action="">
+			<div class="form-row">
+			    <div class="col-sm-12 col-md-4 mb-3">
+			      <input type="number" class="form-control" id="input_money" name="input_money" placeholder="Nhập số tiền" required>
+			    </div>
+			    <div class="col-sm-12 col-md-3 mb-3">
+					<select class="custom-select" id="input_code" name="input_code">
+						<option selected>Loại tiền nhập</option>
+						<option value="vnd">VND</option>
+						<option value="eur">EUR</option>
+						<option value="aud">AUD</option>
+					</select>
+			    </div>
+			    <div class="col-sm-12 col-md-3 mb-3">
+					<select class="custom-select" id="output_code" name="output_code">
+						<option selected>Loại tiền đổi</option>
+						<option value="vnd">VND</option>
+						<option value="eur">EUR</option>
+						<option value="aud">AUD</option>
+					</select>
+			    </div>
+				<div class="col-sm-12 col-md-2 mb-3">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
 			</div>
-			<div class="col-12 col-md-4">
-				<label for="">Đơn vị tiền nhập</label>
-				<select class="custom-select" id="inputGroupSelect01">
-					<option selected>Choose...</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
-			</div>
-			<div class="col-12 col-md-4">
-				<label for="">Đơn vị tiền nhập</label>
-				<select class="custom-select" id="inputGroupSelect01">
-					<option selected>Choose...</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
-			</div>
-		</div>
+		</form>
 	</div>
 	<!-- History of exchange money -->
 	<div class="container">
