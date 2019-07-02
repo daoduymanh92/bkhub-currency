@@ -1,7 +1,9 @@
-<?php 
-	if(isset($_POST["input_money"])) {
-		echo $_POST["input_money"]; die();
-	}
+<?php
+	require 'connection.php';
+	require 'models/exchangeModel.php';
+	require 'models/historyModel.php';
+	$exchanges = getAll($conn);
+	$history = getAllHistory($conn);
 	
 ?>
 
@@ -64,29 +66,20 @@
 		  <thead>
 		    <tr>
 		      <th scope="col">#</th>
-		      <th scope="col">First</th>
-		      <th scope="col">Last</th>
-		      <th scope="col">Handle</th>
+		      <th scope="col">So tien nhap</th>
+		      <th scope="col">Tien chuyen doi</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr>
-		      <th scope="row">1</th>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">2</th>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">3</th>
-		      <td colspan="2">Larry the Bird</td>
-		      <td>@twitter</td>
-		    </tr>
+		  	<?php foreach ($history as $key => $value) { ?>
+		  	
+			    <tr>
+			      <td scope="row">1</td>
+			      <td><?php echo $value['amount']?> <?php echo $value['start_money_code']?></td>
+			      <td>3 EUR</td>
+			    </tr>
+			<?php } ?>
+
 		  </tbody>
 		</table>		
 	</div>
