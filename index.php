@@ -1,7 +1,11 @@
 <?php 
-	if(isset($_POST["input_money"])) {
-		echo $_POST["input_money"]; die();
-	}
+	require 'connection.php';
+	require 'models/HistoryModel.php';
+
+	$history = new HistoryModel($conn);
+	$results = $history->getAll();
+
+	// var_dump($results); die();
 	
 ?>
 
@@ -64,29 +68,18 @@
 		  <thead>
 		    <tr>
 		      <th scope="col">#</th>
-		      <th scope="col">First</th>
-		      <th scope="col">Last</th>
-		      <th scope="col">Handle</th>
+		      <th scope="col">Số tiền cần chuyển đổi</th>
+		      <th scope="col">Số tiền sau chuyển đổi</th>
 		    </tr>
 		  </thead>
 		  <tbody>
+		  	<?php foreach($results as $result) {?>
 		    <tr>
-		      <th scope="row">1</th>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>
+		      <th scope="row"><?php echo $result['id']?></th>
+		      <td><?php echo $result['amount']?> <?php echo $result['start_money']?></td>
+		      <td><?php echo $result['transfer_money']?> <?php echo $result['end_money']?></td>
 		    </tr>
-		    <tr>
-		      <th scope="row">2</th>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">3</th>
-		      <td colspan="2">Larry the Bird</td>
-		      <td>@twitter</td>
-		    </tr>
+			<?php } ?>
 		  </tbody>
 		</table>		
 	</div>

@@ -5,13 +5,15 @@ $conn = mysqli_connect("localhost","root","","currency");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully";
+// echo "Connected successfully";
 // $sql = "SELECT * FROM bang_gia";
 // $result = $conn -> query($sql);
 // var_dump($result);
 // $data = $result-> fetch_assoc();
 // var_dump($data);
 // die();
-// -----
+//		$result = mysqli_query($this->conn ,$sql);
+		// Fetch all
+		//$data = mysqli_fetch_all($result);
 
 ?>
