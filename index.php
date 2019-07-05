@@ -5,6 +5,8 @@
 	$history = new HistoryModel($conn);
 	$results = $history->getAll();
 
+	// $ = $history->getRecordByID(12);
+
 	// var_dump($results); die();
 	
 ?>
@@ -70,14 +72,16 @@
 		      <th scope="col">#</th>
 		      <th scope="col">Số tiền cần chuyển đổi</th>
 		      <th scope="col">Số tiền sau chuyển đổi</th>
+		      <th scope="col">Chi tiết</th>
 		    </tr>
 		  </thead>
 		  <tbody>
 		  	<?php foreach($results as $result) {?>
 		    <tr>
-		      <th scope="row"><?php echo $result['id']?></th>
-		      <td><?php echo $result['amount']?> <?php echo $result['start_money']?></td>
-		      <td><?php echo $result['transfer_money']?> <?php echo $result['end_money']?></td>
+		      <td scope="row"><?php echo $result['id']?></td>
+		      <td><?php echo $result['amount']?> <?php echo $result['start_money_code']?></td>
+		      <td><?php echo $result['transfer_amount']?> <?php echo $result['end_money_code']?></td>
+		      <td><a href="<?php echo 'history_detail.php?id='.$result['id'] ?>">Detail</a></td>
 		    </tr>
 			<?php } ?>
 		  </tbody>
